@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AW Finance</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f9}
+.hero{background:linear-gradient(135deg,#0b5ed7,#1f8cff);color:white;text-align:center;padding:60px 20px}
+.logo{width:90px;height:90px;border-radius:50%;background:white;color:#0b5ed7;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:34px;font-weight:bold}
+.btn{display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:8px;text-decoration:none}
+.container{max-width:800px;margin:30px auto;background:white;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:20px}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}
+button{width:100%;padding:14px;background:#25D366;color:white;border:none;border-radius:5px;font-size:16px;cursor:pointer}
+footer{text-align:center;padding:20px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div class="logo">AW</div>
+<h1>AW Finance</h1>
+<p>Demandez un financement rapidement et envoyez votre dossier sur WhatsApp.</p>
+<a href="#formulaire" class="btn">Faire une demande</a>
+</div>
+
+<div class="container">
+<h2>Pourquoi nous choisir ?</h2>
+<div class="cards">
+<div class="card"><h3>Simple</h3><p>Formulaire rapide.</p></div>
+<div class="card"><h3>Rapide</h3><p>Transmission directe via WhatsApp.</p></div>
+<div class="card"><h3>Suivi</h3><p>Accompagnement personnalisé.</p></div>
+</div>
+</div>
+
+<div class="container" id="formulaire">
+<h2>Demande de financement</h2>
+
+<form onsubmit="envoyerWhatsApp(); return false;">
+<input type="text" id="nom" placeholder="Nom complet" required>
+<input type="tel" id="telephone" placeholder="Téléphone" required>
+
+<select id="typePret" required>
+<option value="">Type de financement</option>
+<option>Prêt personnel</option>
+<option>Prêt professionnel</option>
+<option>Prêt automobile</option>
+<option>Prêt immobilier</option>
+</select>
+
+<input type="number" id="montant" placeholder="Montant souhaité (FCFA)" required>
+
+<textarea id="projet" rows="5" placeholder="Décrivez votre projet" required></textarea>
+
+<button type="submit">Envoyer sur WhatsApp</button>
+</form>
+</div>
+
+<footer>© 2026 AW Finance</footer>
+
+<script>
+function envoyerWhatsApp(){
+let nom=document.getElementById("nom").value;
+let telephone=document.getElementById("telephone").value;
+let typePret=document.getElementById("typePret").value;
+let montant=document.getElementById("montant").value;
+let projet=document.getElementById("projet").value;
+
+let message=`Nouvelle demande de financement
+
+Nom : ${nom}
+Téléphone : ${telephone}
+Type : ${typePret}
+Montant : ${montant} FCFA
+
+Projet :
+${projet}`;
+
+window.open("https://wa.me/22872866303?text="+encodeURIComponent(message),"_blank");
+}
+</script>
+
+</body>
+</html>
